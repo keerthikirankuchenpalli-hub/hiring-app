@@ -1,0 +1,34 @@
+{
+  "name": "hiring-app",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000h\u0000i\u0000r\u0000i\u0000n\u0000g\u0000-\u0000a\u0000p\u0000p\u0000\r\u0000 \u0000#\u0000 \u0000h\u0000i\u0000r\u0000i\u0000n\u0000g\u0000-\u0000a\u0000p\u0000p\u0000\r\u0000 \u0000",
+  "keywords": [],
+  "homepage": "https://github.com/keerthikirankuchenpalli-hub/hiring-app#readme",
+  "bugs": {
+    "url": "https://github.com/keerthikirankuchenpalli-hub/hiring-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keerthikirankuchenpalli-hub/hiring-app.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "worqly/src/app.js",
+  "scripts": {
+    "dev": "nodemon worqly/src/app.js",
+    "start": "node worqly/src/app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.20.0",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

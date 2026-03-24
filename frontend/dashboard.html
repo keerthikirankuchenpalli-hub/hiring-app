@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Worqly HR Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; min-height: 100vh; background: #eff2f8; }
+    .container { max-width: 760px; margin: 40px auto; background:#fff; padding: 20px 24px; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+    h1 { margin-top: 0; color: #2c3a57; }
+    .user-info { margin-bottom: 20px; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #4f46e5; color: #fff; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="welcomeMsg">Welcome to Worqly Dashboard</h1>
+    <nav style="margin-bottom: 20px;">
+      <a href="#" id="linkHome" style="margin-right: 12px; text-decoration:none; color:#4f46e5;">Home</a>
+      <a href="#" id="linkProfile" style="margin-right: 12px; text-decoration:none; color:#4f46e5;">Profile</a>
+      <a href="#" id="linkEmployees" style="text-decoration:none; color:#4f46e5;">Employees</a>
+    </nav>
+    <div class="user-info" id="userInfo"></div>
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+  <script>
+    const token = localStorage.getItem('worqly_token');
+    const userJson = localStorage.getItem('worqly_user');
+    if (!token || !userJson) {
+      window.location.href = 'index.html';
+      throw new Error('Not authenticated');
+    }
+
+    const user = JSON.parse(userJson);
+    document.getElementById('welcomeMsg').innerText = `Welcome, ${user.name} (${user.role})`;
+
+    document.getElementById('userInfo').innerHTML = `
+      <strong>User:</strong> ${user.name} <br />
+      <strong>Email:</strong> ${user.email} <br />
+      <strong>Role:</strong> ${user.role} <br />
+      <strong>Department:</strong> ${user.department || 'N/A'}
+    `;
+
+    document.getElementById('linkHome').addEventListener('click', (event) => { event.preventDefault(); alert('Already on home'); });
+    document.getElementById('linkProfile').addEventListener('click', (event) => { event.preventDefault(); alert('Profile page (not implemented)'); });
+    document.getElementById('linkEmployees').addEventListener('click', (event) => { event.preventDefault(); alert('Employee list page (not implemented)'); });
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('worqly_token');
+      localStorage.removeItem('worqly_user');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
